@@ -292,7 +292,7 @@
             },
             {
               "displayName": "openMRS.programEnrollment.attributes",
-              "fieldKey": "attributesMap",
+              "fieldKey": "firstObject.programAttributes",
               "type": "MAP"
             }
           ]

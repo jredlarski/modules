@@ -44,7 +44,7 @@ public class OpenMRSProgramEnrollmentServiceImpl implements OpenMRSProgramEnroll
 
     @Override
     public ProgramEnrollment createProgramEnrollment(String configName, ProgramEnrollment programEnrollment) {
-        validateProgramEnrollment(programEnrollment);
+        validateProgramEnrollment(programEnrollment); // przechodzi, ale nie sprawdza atrybutow
 
         try {
             Config config = configService.getConfigByName(configName);
@@ -53,7 +53,7 @@ public class OpenMRSProgramEnrollmentServiceImpl implements OpenMRSProgramEnroll
             if (programEnrollment.getAttributes() == null) {
                 created = programEnrollmentResource.createProgramEnrollment(config, programEnrollment);
             } else {
-                created = programEnrollmentResource.createBahmniProgramEnrollment(config, programEnrollment);
+                created = programEnrollmentResource.createBahmniProgramEnrollment(config, programEnrollment); // tu sie wywala
             }
 
             eventRelay.sendEventMessage(new MotechEvent(EventKeys.CREATED_PROGRAM_ENROLLMENT, EventHelper.programEnrollmentParameters(created)));
