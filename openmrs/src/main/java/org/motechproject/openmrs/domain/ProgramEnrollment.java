@@ -4,7 +4,9 @@ import com.google.gson.annotations.Expose;
 import org.apache.commons.collections.CollectionUtils;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -173,6 +175,14 @@ public class ProgramEnrollment {
 
     public void setAttributes(List<Attribute> attributes) {
         this.attributes = attributes;
+    }
+
+    public Map<String, String> getProgramAttributes() {
+        Map<String, String> programAttributes = new HashMap<>();
+        for (Attribute attribute : attributes) {
+            programAttributes.put(attribute.getAttributeType().getDisplay(), attribute.getValue());
+        }
+        return programAttributes;
     }
 
     public boolean isEnrolled() {
